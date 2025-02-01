@@ -48,4 +48,5 @@ TradeBot is a reinforcement learning-powered trading assistant designed to help 
 1. Train the model by tesla stock data using the `RLbot.py` file, altering the timestep to train to your needs
 2. Test the model by nvidia stock data using the `testingRL.py` file
 
+### Disclaimer: Use this bot at your own risk
 
