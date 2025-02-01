@@ -3,9 +3,9 @@ import pandas as pd
 from datetime import datetime, timezone
 # Authenticate with Reddit
 reddit = praw.Reddit(
-    client_id="wTUXk2lsnJK53PP2QsSjOQ",
-    client_secret="JhTn9IeJucGRlGjyF5pMdDEW5jxEYg",
-    user_agent="TeslaStockAnalysis/1.0"
+    client_id="crwfer",
+    client_secret="ddqdq",
+    user_agent="12312"
 )
 posts_count = 0
 # Set up the date range
