@@ -1,11 +1,8 @@
-from mastodon import Mastodon
 import requests
 import json
 import csv
 from datetime import datetime, timezone
 import re
-m = Mastodon(access_token="6BPeXcM63JRbiLJAEIPKtLi7F9rYUIKwLsdPKLYE08g", api_base_url="https://mastodon.social")
-
 def remove_links(content):
     return re.sub(r'<a[^>]*>.*?</a>', '', content)
 
@@ -30,9 +27,6 @@ def get_hashtag_posts(hashtags, start_date, end_date):
             response = requests.get(api_url, params=params)
             data = json.loads(response.text)
 
-            if not data:
-                break
-
             for post in data:
                 created_utc = datetime.fromisoformat(post['created_at'].replace('Z', '+00:00'))
                 formatted_date = created_utc.strftime('%m-%d-%Y')
@@ -43,6 +37,7 @@ def get_hashtag_posts(hashtags, start_date, end_date):
                     continue
                 if start_date <= created_utc <= end_date:
                     post_tuple = (formatted_date, formatted_content)
+                    print(post_tuple)
                     if post_tuple not in all_posts:
                         all_posts.add(post_tuple)
                         count += 1
@@ -68,13 +63,13 @@ def save_to_csv(posts, filename):
 
 # Set up the date range
 start_date = datetime(2022, 1, 1, tzinfo=timezone.utc)
-end_date = datetime(2022, 1, 2, tzinfo=timezone.utc)
+end_date = datetime(2022, 12, 31, tzinfo=timezone.utc)
 
 hashtags_to_search = ['tesla']
 
 posts = get_hashtag_posts(hashtags_to_search, start_date, end_date)
-save_to_csv(posts, "mastodon_tesla_posts_1st_half_year2022.csv")
+save_to_csv(posts, "mastodon_tesla_posts.csv")
 
 print(
-    f"Tesla-related posts from {start_date.date()} to {end_date.date()} saved to mastodon_tesla_posts_oct23_nov22.csv!")
+    f"Tesla-related posts saved to mastodon_tesla_posts_oct23_nov22.csv!")
 print(f"Total unique posts: {len(posts)}")

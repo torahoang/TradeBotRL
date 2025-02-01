@@ -1,6 +1,6 @@
 import yfinance as yf
-start_date = "2024-01-01"
-end_date = "2024-11-23"
+start_date = "2023-01-01"
+end_date = "2024-12-31"
 
 tesla = yf.Ticker("TSLA")
 
