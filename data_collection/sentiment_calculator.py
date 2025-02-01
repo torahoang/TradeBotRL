@@ -13,7 +13,7 @@ def calculate_daily_sentiment(df):
     return sentiment_score
 
 
-df = pd.read_csv('mastodon_tesla_posts_year2024_with_sentiment.csv')
+df = pd.read_csv('nvidia2024_reddit_with_sentiment.csv')
 
 # Convert created_utc to datetime
 df['date'] = pd.to_datetime(df['created_utc'], format='%m-%d-%Y').dt.date
@@ -23,5 +23,5 @@ daily_sentiment = df.groupby('date').apply(calculate_daily_sentiment).reset_inde
 daily_sentiment.columns = ['date', 'sentiment_score']
 
 # Save results
-daily_sentiment.to_csv('reddit_daily_sentiment_scores.csv', index=False)
+daily_sentiment.to_csv('nvidia2024_reddit_with_sentiment.csv', index=False)
 print("Daily sentiment scores have been calculated and saved.")

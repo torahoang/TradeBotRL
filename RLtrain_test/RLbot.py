@@ -56,6 +56,7 @@ class TradingEnv(gymnasium.Env):
         elif action == 3:
             self.sell_threshold -= 0.05
 
+
         #update port value
         self.total_portfolio = self._update_port_value()
 
@@ -65,6 +66,16 @@ class TradingEnv(gymnasium.Env):
         #idk wth is this
         terminated = self.current_step >= len(self.data) - 1  # End of dataset
         truncated = False
+
+        # If it's the last step, sell all shares
+        if terminated and self.shares_owned > 0:
+            row = self.data.iloc[self.current_step]
+            closing_price = row['closing_price']
+            revenue = self.shares_owned * closing_price
+            profit = revenue - (self.position * self.shares_owned)
+            self.cash += revenue
+            self.shares_owned = 0
+            self.position = None
 
         #cal reward
         reward = self._calculate_reward()
@@ -133,7 +144,7 @@ class TradingEnv(gymnasium.Env):
             inactivity_penalty += -0.1
         else:
             inactivity_penalty += -0.05
-        total_reward = reward_for_growth + inactivity_penalty + profit * 1.05 + buy_reward
+        total_reward = inactivity_penalty + profit + buy_reward
 
         return total_reward
 
@@ -144,20 +155,20 @@ class TradingEnv(gymnasium.Env):
         return self.cash + share_value
 # uncomment to train
 # #load market data
-# df = pd.read_csv('filtered_data.csv')
+# df = pd.read_csv('tesla_filtered_data_train.csv')
 #
 # #Initialize the trading environment
 # env = TradingEnv(df)
 #
 # #Train PPO moddel
 # model = PPO("MlpPolicy", env, verbose=1, device='cpu')
-# model.learn(total_timesteps= 130000)
+# model.learn(total_timesteps= 150000)
 #
 # logs_df = pd.DataFrame(env.iteration_logs)
 # logs_df.to_csv("iteration_logs.csv", index=False)
 #
 # # Save the trained model to a file.
 # model.save("rl_sentiment_closing_price_bot")
-#
+
 
 

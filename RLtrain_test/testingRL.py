@@ -4,7 +4,7 @@ from stable_baselines3 import PPO
 from RLbot import TradingEnv  # Assuming your TradingEnv class is in a separate file
 
 # Load market data (same or new dataset)
-df = pd.read_csv('filtered_data.csv')
+df = pd.read_csv('nvidia_filtered_test.csv')
 
 # Initialize the trading environment
 env = TradingEnv(df)

@@ -49,21 +49,21 @@
 # import pandas as pd
 #
 # # Read the CSV files.
-# mastodon_df = pd.read_csv('mastodon_daily_sentiment_scores.csv')
-# reddit_df = pd.read_csv('reddit_daily_sentiment_scores.csv')
-# tesla_df = pd.read_csv('tesla_closing_prices_modified.csv')
+# mastodon_df = pd.read_csv('nvidia2024_matsodon_with_sentiment.csv')
+# reddit_df = pd.read_csv('nvidia2024_reddit_with_sentiment.csv')
+# nvidia_df = pd.read_csv('nvidia_closing_prices.csv')
 #
 # # Convert the date formats to ensure they align correctly.
 # mastodon_df['date'] = pd.to_datetime(mastodon_df['date'])
 # reddit_df['date'] = pd.to_datetime(reddit_df['date'])
-# tesla_df['Date'] = pd.to_datetime(tesla_df['Date'], format='%m-%d-%Y')
+# nvidia_df['Date'] = pd.to_datetime(nvidia_df['Date'], format='%m-%d-%Y')
 #
 # # Rename columns for consistency
-# tesla_df.rename(columns={'Date': 'date', 'Close': 'tesla_close'}, inplace=True)
+# nvidia_df.rename(columns={'Date': 'date', 'Close': 'tesla_close'}, inplace=True)
 #
 # # Combine the dataframes on the date column.
 # combined_df = pd.merge(mastodon_df, reddit_df, on='date', how='outer')
-# combined_df = pd.merge(combined_df, tesla_df, on='date', how='outer')
+# combined_df = pd.merge(combined_df, nvidia_df, on='date', how='outer')
 #
 # # Sort the combined dataframe by date.
 # combined_df = combined_df.sort_values(by='date').reset_index(drop=True)
@@ -75,8 +75,8 @@
 # print(combined_df.head())
 
 
-
-# #4TH STEP: THIS CALCULATE THE COMBINED SENTIMENT OF REDDIT AND MATSODON
+#
+# # #4TH STEP: THIS CALCULATE THE COMBINED SENTIMENT OF REDDIT AND MATSODON
 # import pandas as pd
 #
 # # Load the CSV file
@@ -90,19 +90,19 @@
 #
 # # Save the modified DataFrame back to CSV
 # df.to_csv('modified_sentiment_and_prices.csv', index=False)
-
-
-## 5TH STEP: THIS REMOVE THE DAY THAT DON'T HAVE A PRICE FROM THE CLOSING PRICE COLLUMN
-# import pandas as pd
 #
-# # Load the CSV file
-# file_path = 'modified_sentiment_and_prices.csv'
-# df = pd.read_csv(file_path)
-#
-# # Remove rows where 'combined_sentiment' is NaN (not available)
-# df_cleaned = df.dropna(subset=['tesla_close'])
-# df_cleaned = df_cleaned.dropna(subset=["combined_sentiment"])
-# # Save the cleaned DataFrame to a new CSV file
-# output_file_path = 'cleaned_sentiment_and_prices.csv'
-# df_cleaned.to_csv(output_file_path, index=False)
+
+# 5TH STEP: THIS REMOVE THE DAY THAT DON'T HAVE A PRICE FROM THE CLOSING PRICE COLLUMN
+import pandas as pd
+
+# Load the CSV file
+file_path = 'modified_sentiment_and_prices.csv'
+df = pd.read_csv(file_path)
+
+# Remove rows where 'combined_sentiment' is NaN (not available)
+df_cleaned = df.dropna(subset=['tesla_close'])
+df_cleaned = df_cleaned.dropna(subset=["combined_sentiment"])
+# Save the cleaned DataFrame to a new CSV file
+output_file_path = 'cleaned_sentiment_and_prices.csv'
+df_cleaned.to_csv(output_file_path, index=False)
 

@@ -2,7 +2,7 @@ import pandas as pd
 from transformers import pipeline
 
 # Load the CSV file
-df = pd.read_csv('tesla_multi_subreddit_posts_year2024.csv')
+df = pd.read_csv('mastodon_nvidia_posts.csv')
 
 # Initialize the sentiment analysis pipeline
 sentiment_task = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment-latest", device=0,
@@ -17,8 +17,8 @@ def analyze_sentiment(text):
     post = post + 1
     return sentiment
 
-df['sentiment'] = df['content_reddit'].apply(analyze_sentiment)
+df['sentiment'] = df['content_matsodon'].apply(analyze_sentiment)
 # Save the updated DataFrame back to CSV
-df.to_csv('tesla_multi_subreddit_posts_year2024_with_sentiment.csv', index=False)
+df.to_csv('nvidia2024_matsodon_with_sentiment.csv', index=False)
 
-print("Sentiment analysis complete. Results saved to 'tesla_multi_subreddit_posts_oct23_nov22_with_sentiment.csv'")
+print("Sentiment analysis complete.")

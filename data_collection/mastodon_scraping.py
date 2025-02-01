@@ -35,6 +35,7 @@ def get_hashtag_posts(hashtags, start_date, end_date):
                 formatted_content = remove_paragraph_tags(formatted_content)
                 if len(formatted_content) < 40:
                     continue
+                print(created_utc)
                 if start_date <= created_utc <= end_date:
                     post_tuple = (formatted_date, formatted_content)
                     print(post_tuple)
@@ -62,14 +63,14 @@ def save_to_csv(posts, filename):
 
 
 # Set up the date range
-start_date = datetime(2022, 1, 1, tzinfo=timezone.utc)
-end_date = datetime(2022, 12, 31, tzinfo=timezone.utc)
+start_date = datetime(2024, 1, 1, tzinfo=timezone.utc)
+end_date = datetime(2024, 12, 31, tzinfo=timezone.utc)
 
-hashtags_to_search = ['tesla']
+hashtags_to_search = ['Nvidia']
 
 posts = get_hashtag_posts(hashtags_to_search, start_date, end_date)
 save_to_csv(posts, "mastodon_tesla_posts.csv")
 
 print(
-    f"Tesla-related posts saved to mastodon_tesla_posts_oct23_nov22.csv!")
+    f"Tesla-related posts saved to mastodon_tesla_posts.csv!")
 print(f"Total unique posts: {len(posts)}")
