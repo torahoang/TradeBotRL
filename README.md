@@ -23,7 +23,7 @@ TradeBot is a reinforcement learning-powered trading assistant designed to help 
    - Train a Proximal Policy Optimization (PPO) model to optimize buy/sell thresholds dynamically.
 5. **Backtesting Framework**:
    - Use `backtesting_with_sentiment.py` to evaluate the basic performance, generating metrics and transaction logs.
-   - use 'testingRL.py' to evaluate automatic trade bot, generating action steps and final value 
+   - use `testingRL.py` to evaluate automatic trade bot, generating action steps and final value 
 
 ### Usage 🍳
 1. Prepare your dataset by running the scraping scripts (`reddit_scrape.py` or `mastodon_scraping.py`) and analyzing them with `sentiment_analysis.py`.
@@ -40,12 +40,12 @@ TradeBot is a reinforcement learning-powered trading assistant designed to help 
 ```
 
 ### Data collection
-1. Use 'reddit_scrape.py' and mastodon_scraping.py to collect post data from reddit and mastodon
-2. Use 'sentiment_analysis.py' to categorize the sentiment of each post content
-3. Use 'data_preprocessing.py' and necessary script to clean the data
+1. Use `reddit_scrape.py` and mastodon_scraping.py to collect post data from reddit and mastodon
+2. Use `sentiment_analysis.py` to categorize the sentiment of each post content
+3. Use `data_preprocessing.py` and necessary script to clean the data
 
 ### Train and test RL agent
-1. Train the model by tesla stock data using the 'RLbot.py' file, altering the timestep to train to your needs
-2. Test the model by nvidia stock data using the 'testingRL.py' file
+1. Train the model by tesla stock data using the `RLbot.py` file, altering the timestep to train to your needs
+2. Test the model by nvidia stock data using the `testingRL.py` file
 
 
