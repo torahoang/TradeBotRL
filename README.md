@@ -1,4 +1,4 @@
-# TradeBot - Smarter Trading Decisions, Simplified 📈🤖
+# TradeBotRL - Smarter Trading Decisions, Simplified 📈🤖
 
 TradeBot is a reinforcement learning-powered trading assistant designed to help users make informed and optimized trading decisions. By leveraging sentiment analysis and market data, TradeBot dynamically adjusts buy and sell thresholds to maximize portfolio performance. This tool is ideal for traders seeking to integrate artificial intelligence into their strategies, offering insights based on real-time sentiment and price trends.
 
@@ -47,6 +47,11 @@ TradeBot is a reinforcement learning-powered trading assistant designed to help 
 ### Train and test RL agent
 1. Train the model by tesla stock data using the `RLbot.py` file, altering the timestep to train to your needs
 2. Test the model by nvidia stock data using the `testingRL.py` file
+
+### License 
+
+`TradeBotRL` is licensed under MIT License. All development is currently maintain by [Hoang Quy Nguyen](https://github.com/torahoang).
+
 
 ### Disclaimer: Use this bot at your own risk
 
